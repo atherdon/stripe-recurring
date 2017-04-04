@@ -14,10 +14,20 @@ module.exports = {
 
   sessionSecret: process.env.SESSION_SECRET || '34SDgsdgspxxxxxxxdfsG', //you can use a long random string
 
-  mailgun: {
-    apiKey: process.env.MAILGUN_API_KEY || '',
-    domain: process.env.MAILGUN_DOMAIN  || ''
-  },
+  // we'll use namecheap email server
+  // mailgun: {
+  //   apiKey: process.env.MAILGUN_API_KEY || '',
+  //   domain: process.env.MAILGUN_DOMAIN  || ''
+  // },
+
+  emailServer: {
+
+   user     : "admin@easymail.io", 
+   password : "ArtJeremieIO123", 
+   host     : "smtp.your-email.com", 
+   ssl      : true,
+   port     : "465"
+  }
 
 
   stripeOptions: {
@@ -45,17 +55,38 @@ module.exports = {
     }
   },
 
-  // stripeNewPlans: {
+  stripeNextVersion: {
+    "public": {
+      "plans": [
+       {
+        name    : "Quarterly",
+        id      : "quarterly",
+        interval: "month",
+        interval_count: "3",
+        currency: "eur",
+        amount  : 1485, //0
+      },
+      {
+        name    : "Yearly",
+        id      : "yearly",
+        interval: "year",
+        currency: "eur",
+        amount  : 4560, //0
+      }
+    ],
+      "stripe": { //process.env.STRIPE_KEY
+        "testPublishableKey": "pk_test_thzSoJYFgDc9t97sgrZ05KH9",
+        "livePublishableKey": "pk_live_"
+      }
+  },
+  "private": {
+    "stripe": { //process.env.STRIPE_PUB_KEY 
+      "testSecretKey": "sk_test_2kBJjZnrNHcTtgDXUuuYzSsx",
+      "liveSecretKey": "sk_live_"
+    }
+  }
+} 
 
-  //   "basic-monthly": {
-  //     name: "Basic Plan",
-  //     id: "basic-monthly",
-  //     interval: "month",
-  //     currency: "usd",
-  //     amount: 0,
-  //   }
 
-  // },
-
-  googleAnalytics: process.env.GOOGLE_ANALYTICS || ''
+  googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-96603282-1'
 };
