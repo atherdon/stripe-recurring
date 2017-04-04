@@ -22,8 +22,8 @@ module.exports = {
 
   emailServer: {
 
-   user     : "admin@easymail.io", 
-   password : "ArtJeremieIO123", 
+   user     : "admin@easymail.io",  //EMAIL_USERNAME
+   password : "ArtJeremieIO123",  //EMAIL_PASSWORD
    host     : "smtp.your-email.com", 
    ssl      : true,
    port     : "465"
